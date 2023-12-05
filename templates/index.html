@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automotive Spare Parts Shop</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Automotive Spare Parts Shop</h1>
+    </header>
+
+    <main>
+        <section id="product-catalog">
+            <h2>Product Catalog</h2>
+            <ul id="product-list">
+                {% for product in products %}
+                    <li>{{ product.name }} - ${{ product.price }} <a href="{{ url_for('order', product_id=product.id, user_id=1) }}">Order</a></li>
+                {% endfor %}
+            </ul>
+        </section>
+
+        <section id="registration-form">
+            <h2>User Registration</h2>
+            <form id="register-form" method="POST" action="{{ url_for('register') }}">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+                <input type="submit" value="Register">
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <!-- Add footer content here -->
+    </footer>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
